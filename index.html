@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Vamos sair amanhã</title>
+    <style>
+        #yes, #no {
+            position: absolute;
+            cursor: pointer;
+            font-size: 2em; /* Make the text larger */
+        }
+        #message {
+            display: none;
+            text-align: center;
+        }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+    <h1>Vamos sair amanhã?</h1>
+    <div id="yes">Sim</div>
+    <div id="no">Não</div>
+    <h2 id="message">Ebaaa!</h2>
+
+    <script>
+        var yes = $("#yes");
+        var no = $("#no");
+        var message = $("#message");
+
+        yes.click(function() {
+            message.show();
+        });
+
+        function moveElement(element, speed) {
+            var x = Math.random() * ($(window).width() - element.outerWidth());
+            var y = Math.random() * ($(window).height() - element.outerHeight());
+            element.animate({
+                left: x + 'px',
+                top: y + 'px'
+            }, speed, function() {
+                moveElement(element, speed);
+            });
+        }
+
+        moveElement(yes, 2000);
+        moveElement(no, 500);
+    </script>
+</body>
+</html>
